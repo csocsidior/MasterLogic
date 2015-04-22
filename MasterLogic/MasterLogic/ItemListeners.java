@@ -120,7 +120,7 @@ public class ItemListeners {
 	    			        }
 	    			        colourplaces.placeButtons[i].setIcon(orange);
 	    			        colourplaces.placeButtons[i].setDisabledIcon(orange);
-	    			        colourplaces.placeButtons[i].setPressedIcon(green);
+	    			        colourplaces.placeButtons[i].setPressedIcon(orange);
 	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
 	    			        colourplaces.placeButtons[i].setBorderPainted(false);
 	    			        colourplaces.placeButtons[i].setOpaque(false);

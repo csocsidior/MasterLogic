@@ -15,6 +15,9 @@ public class Colour
 	Icon red = new ImageIcon(Colour.class.getResource("red.png"));
 	Icon red_glow = new ImageIcon(Colour.class.getResource("red_glow.png"));
 	
+	Icon orange = new ImageIcon(Colour.class.getResource("orange.png"));
+	Icon orange_glow = new ImageIcon(Colour.class.getResource("orange_glow.png"));
+	
 	StartHandler startButtonHandler;
 	Colours_Guessed buttons;
 
@@ -47,7 +50,13 @@ public class Colour
 			 switch(i)
 			 {
 			 
-			 case 0: colourButtons[i].setBackground(Color.YELLOW);
+			 case 0: colourButtons[i].setIcon(orange);
+			 		 colourButtons[i].setDisabledIcon(orange);
+			 		 colourButtons[i].setPressedIcon(orange);
+			 		 colourButtons[i].setContentAreaFilled(false);
+			 		 colourButtons[i].setBorderPainted(false);
+			 		 colourButtons[i].setOpaque(false);
+			 		 colourButtons[i].setRolloverIcon(orange_glow);
 			 		 break;
 			 
 			 case 1: colourButtons[i].setBackground(Color.WHITE);
@@ -108,9 +117,15 @@ public class Colour
 			 switch(ItemListeners.containerForGuessedButtons[i])
 			 {
 			 
-			 case 0: guessedButtons[i].setBackground(Color.YELLOW);
+			 case 0: guessedButtons[i].setIcon(orange);
+		 		 	 guessedButtons[i].setDisabledIcon(orange);
+		 		 	 guessedButtons[i].setPressedIcon(orange);
+		 		 	 guessedButtons[i].setContentAreaFilled(false);
+		 		 	 guessedButtons[i].setBorderPainted(false);
+		 		 	 guessedButtons[i].setOpaque(false);
 			 		 break;
 			 
+			 		 
 			 case 1: guessedButtons[i].setBackground(Color.WHITE);
 			 		 break;
 			 

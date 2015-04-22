@@ -16,7 +16,7 @@ import java.awt.event.ItemListener;
 
 public class StartScreen   
 
-{	//anyád Bagyi!!!!
+{	
      
     //Class of the Start Menu
 
@@ -76,7 +76,7 @@ public class StartScreen
 	Sound sound = new Sound();
 
 	
-	Firstpanel_overrided firstpanel = new Firstpanel_overrided();
+	Firstpanel_overrided firstpanel = new Firstpanel_overrided();  //overrided JPanel with background
 	
 	
 	public void defaultlevel()
@@ -97,20 +97,20 @@ public class StartScreen
         f.setVisible(true);
         
         
-        firstpanel.setLayout(null);
-        firstpanel.setVisible(true);								
-        firstpanel.setBackground(Color.darkGray);						//firstScreen JPanel settings
-        firstpanel.setPreferredSize(new Dimension(800, 700));    
-        firstpanel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        f.getContentPane().add(firstpanel);
-        //f.add(firstpanel);
+        firstScreen.setLayout(null);
+        firstScreen.setVisible(true);								
+        firstScreen.setBackground(Color.darkGray);						//firstScreen JPanel settings
+        firstScreen.setPreferredSize(new Dimension(800, 700));    
+        firstScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+       // f.getContentPane().add(firstScreen);
+        f.add(firstScreen);
         
         
         label.setLocation(240, 100);									//label of the firstScreen
         label.setSize(400,200);
         label.setFont(new java.awt.Font("Times New Roman", 1, 60));
         label.setForeground (Color.BLACK);
-        firstpanel.add(label);   
+        firstScreen.add(label);   
 
         b1.setRolloverIcon(button11);
         b1.setSize(190, 64);
@@ -118,7 +118,7 @@ public class StartScreen
         b1.setContentAreaFilled(false);
         b1.setBorderPainted(false);
         b1.setFocusPainted(false);
-        firstpanel.add(b1);	
+        firstScreen.add(b1);	
        
         b2.setRolloverIcon(button22);
         b2.setSize(190, 64);
@@ -126,7 +126,7 @@ public class StartScreen
         b2.setContentAreaFilled(false);									// "Settings" button settings
         b2.setBorderPainted(false);
         b2.setFocusPainted(false);
-        firstpanel.add(b2);	
+        firstScreen.add(b2);	
         
         b3.setRolloverIcon(button33);
         b3.setSize(190, 64);
@@ -134,7 +134,7 @@ public class StartScreen
         b3.setContentAreaFilled(false);									// "How to Play" button settings
         b3.setBorderPainted(false);
         b3.setFocusPainted(false);
-        firstpanel.add(b3);
+        firstScreen.add(b3);
         
         b4.setRolloverIcon(button44);
         b4.setSize(190, 64);
@@ -142,7 +142,7 @@ public class StartScreen
         b4.setContentAreaFilled(false);									// "Credits" button settings
         b4.setBorderPainted(false);
         b4.setFocusPainted(false);
-        firstpanel.add(b4);
+        firstScreen.add(b4);
         
         b5.setRolloverIcon(button55);
         b5.setSize(190, 64);
@@ -150,7 +150,7 @@ public class StartScreen
         b5.setContentAreaFilled(false);									//"Quit" button settings
         b5.setBorderPainted(false);
         b5.setFocusPainted(false);
-        firstpanel.add(b5);
+        firstScreen.add(b5);
         }
   
     public void startquitHandler()				// This function creates action listener on  
@@ -174,8 +174,8 @@ public class StartScreen
 				 public void actionPerformed(ActionEvent e)
 				 {
 
-					 firstpanel.setVisible(false);
-					 firstpanel.invalidate();				//clearing window
+					 firstScreen.setVisible(false);
+					 firstScreen.invalidate();				//clearing window
 					 
 					 firstScreen2.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 					 firstScreen2.setLayout(null);
@@ -242,9 +242,9 @@ public class StartScreen
 					 System.out.println("back");
 					 
 					 firstScreen2.setVisible(false);
-					 firstpanel.setLayout(null);	//Action Listener on Back button -> go back to firstScreen
-					 firstpanel.setVisible(true);
-					 firstpanel.setPreferredSize(new Dimension(800, 700));
+					 firstScreen.setLayout(null);	//Action Listener on Back button -> go back to firstScreen
+					 firstScreen.setVisible(true);
+					 firstScreen.setPreferredSize(new Dimension(800, 700));
 					 sound.playSound("Button_Push_back.wav");
 				 }
 			 }

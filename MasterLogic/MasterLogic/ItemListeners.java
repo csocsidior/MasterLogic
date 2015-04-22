@@ -28,8 +28,12 @@ public class ItemListeners {
 	
 	Icon green = new ImageIcon(Colour.class.getResource("green.png"));
 	Icon red = new ImageIcon(Colour.class.getResource("red.png"));
+	
 	Icon green_glow = new ImageIcon(Colour.class.getResource("green_glow.png"));
 	Icon red_glow = new ImageIcon(Colour.class.getResource("red_glow.png"));
+	
+	Icon orange = new ImageIcon(Colour.class.getResource("orange.png"));
+	Icon orange_glow = new ImageIcon(Colour.class.getResource("orange_glow.png"));
 	
 	Icon b_done_disabled = new ImageIcon(StartScreen.class.getResource("b_done_disabled.png"));
 	Icon b_done_down = new ImageIcon(StartScreen.class.getResource("b_done_down.png"));
@@ -114,8 +118,13 @@ public class ItemListeners {
 	    			        {
 	    			        	done.setEnabled(true);
 	    			        }
-	    			       
-	    			        colourplaces.placeButtons[i].setBackground(Color.YELLOW);
+	    			        colourplaces.placeButtons[i].setIcon(orange);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(orange);
+	    			        colourplaces.placeButtons[i].setPressedIcon(green);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);
+	    			        //colourplaces.placeButtons[i].setBackground(Color.YELLOW);
 	    	        	}
 	    	        }													
 	    	      } 																		 

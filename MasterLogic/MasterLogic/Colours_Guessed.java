@@ -1,6 +1,8 @@
 package MasterLogic;
 
 import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 																//This class creates the places of the mushrooms. It's called in the StartHandler class. 
 																//
@@ -9,7 +11,8 @@ public class Colours_Guessed
 	{
 
 	StartHandler startHandler_1;
-
+	
+	ImageIcon selectedGuess = new ImageIcon(Colour.class.getResource("selectedGuess.png"));
 	
 	public Colours_Guessed(StartHandler s)
 	{
@@ -37,6 +40,7 @@ public class Colours_Guessed
 		    placeButtons[i].setLocation(40+i*60, 150);								
 		    placeButtons[i].setBackground(Color.darkGray);							
 		    placeButtons[i].setForeground(Color.BLACK);
+		    placeButtons[i].setSelectedIcon(selectedGuess);
 		    startHandler_1.gameWindow.add(placeButtons[i]);
 	
 		} 

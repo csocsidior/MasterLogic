@@ -61,7 +61,7 @@ public class Stick {
 			
 			stickarray[i] = new JButton("");
 			stickarray[i].setSize(30, 30);
-			stickarray[i].setLocation(400 +(counter*30), 150+ (ItemListeners.tries*80));
+			stickarray[i].setLocation(570 +(counter*30), 100+ (ItemListeners.tries*60));
 			
 			switch(sticks[i])
 			{

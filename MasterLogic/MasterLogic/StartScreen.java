@@ -24,7 +24,8 @@ public class StartScreen
 	JPanel firstScreen = new JPanel();				//firstscreen
 	JLabel label = new JLabel("Mastermind");		
 		
-	JPanel firstScreen4 = new JPanel();				//Credits window
+	//JPanel firstScreen4 = new JPanel();				//Credits window
+	gameWindow_overrided firstScreen4 = new gameWindow_overrided();     //ez itt csak próba
 	JButton b4_back = new JButton("Back");
 		
 	JPanel firstScreen3 = new JPanel();				//How to play window
@@ -59,6 +60,8 @@ public class StartScreen
 	
 	Icon back_up = new ImageIcon(StartScreen.class.getResource("b_back_up.png"));
 	Icon back_down = new ImageIcon(StartScreen.class.getResource("b_back_down.png"));
+	
+	Icon bgroundImage = new ImageIcon(StartScreen.class.getResource("backGround_Startmenu.png"));
 	    
 	JButton b1 = new JButton("",button1);
 	JButton b2 = new JButton("",button2);
@@ -74,9 +77,11 @@ public class StartScreen
 	static  int numOfPlaces=4;			//default colour&place values
 
 	Sound sound = new Sound();
+	
+
 
 	
-	Firstpanel_overrided firstpanel = new Firstpanel_overrided();  //overrided JPanel with background
+	Firstpanel_overrided firstScreen_overrided = new Firstpanel_overrided();  //overrided JPanel with background
 	
 	
 	public void defaultlevel()
@@ -88,22 +93,24 @@ public class StartScreen
 	   
     public void buildStartMenu() 		//This function creates the whole Menu
         {
+    	//firstScreen.repaint();
     	System.out.println("build");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  	//frame settings	
         f.setResizable(false);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         f.setLocation(dim.width/6-f.getSize().width/2, dim.height/24-f.getSize().height/2);
-        f.setUndecorated(true);
+        //f.setUndecorated(true);
         f.setVisible(true);
         
         
         firstScreen.setLayout(null);
         firstScreen.setVisible(true);								
-        firstScreen.setBackground(Color.darkGray);						//firstScreen JPanel settings
+        firstScreen.setBackground(Color.LIGHT_GRAY);						//firstScreen JPanel settings
         firstScreen.setPreferredSize(new Dimension(800, 700));    
         firstScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
        // f.getContentPane().add(firstScreen);
-        f.add(firstScreen);
+        f.getContentPane().add(firstScreen);
+        
         
         
         label.setLocation(240, 100);									//label of the firstScreen

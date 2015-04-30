@@ -37,7 +37,7 @@ public class Colours_Guessed
 			
 		    //placeButtons[i].setText(Integer.toString(i+1));
 		    placeButtons[i].setSize(60, 80);
-		    placeButtons[i].setLocation(40+i*60, 150);								
+		    placeButtons[i].setLocation(260+i*60, 100);								
 		    placeButtons[i].setBackground(Color.darkGray);							
 		    placeButtons[i].setForeground(Color.BLACK);
 		    placeButtons[i].setSelectedIcon(selectedGuess);

@@ -8,6 +8,8 @@ import java.awt.event.ItemListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 
 
 public class ItemListeners {
@@ -19,6 +21,8 @@ public class ItemListeners {
 	static int containerForGuessedButtons[] = new int[StartScreen.numOfColours];
 	
 	JButton done = new JButton("");
+	JButton backtoMenu = new JButton("Quit to menu");
+	
 	static int[] generatedNums=new int[StartScreen.numOfPlaces];
 	static int tries = 0;
 	
@@ -34,6 +38,9 @@ public class ItemListeners {
 	
 	Icon orange = new ImageIcon(Colour.class.getResource("orange.png"));
 	Icon orange_glow = new ImageIcon(Colour.class.getResource("orange_glow.png"));
+	
+	Icon blue = new ImageIcon(Colour.class.getResource("blue.png"));
+	Icon blue_flow = new ImageIcon(Colour.class.getResource("blue_glow.png"));
 	
 	Icon b_done_disabled = new ImageIcon(StartScreen.class.getResource("b_done_disabled.png"));
 	Icon b_done_down = new ImageIcon(StartScreen.class.getResource("b_done_down.png"));
@@ -335,7 +342,13 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        colourplaces.placeButtons[i].setBackground(Color.BLUE);	
+	    			        //colourplaces.placeButtons[i].setBackground(Color.BLUE);	
+	    			        colourplaces.placeButtons[i].setIcon(blue);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(blue);
+	    			        colourplaces.placeButtons[i].setPressedIcon(blue);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);
 	    	        	}
 	    	        }
 	    	      } 
@@ -857,7 +870,7 @@ public class ItemListeners {
 		 	
 		 	done.setEnabled(false);
 		 	done.setSize(64, 64);
-		    done.setLocation(500, 150);
+		    done.setLocation(720, 100);
 		    done.setDisabledIcon(b_done_disabled);
 		    done.setIcon(b_done_up);
 		    done.setRolloverIcon(b_done_down);
@@ -865,7 +878,28 @@ public class ItemListeners {
 		    done.setBorderPainted(false);
 		    done.setOpaque(false);
 		    a.gameWindow.add(done);
+		    
+		    backtoMenu.setSize(117, 80);
+		    backtoMenu.setLocation(50, 610);
+		    backtoMenu.setEnabled(true);
+		    
+		    a.gameWindow.add(backtoMenu);
 	        
+		    
+		    backtoMenu.addActionListener(new ActionListener() 
+		    {
+		    	
+				 public void actionPerformed(ActionEvent e)
+				 {
+					 /*a.gameWindow.removeAll();
+				
+					 String[] args1={};
+				        ProgramStart.main(args1); */
+				        //a.start.f.revalidate();
+				        //a.start.f.repaint();
+
+				 }
+		    });
 
 		    
 		    done.addActionListener(new ActionListener() 
@@ -880,8 +914,8 @@ public class ItemListeners {
 						 
 						 done.setEnabled(false);
 						 
-						 colourplaces.placeButtons[i].setLocation(40+i*60, 150+ 80*counter);	
-						 done.setLocation(500, 150+ 80*counter);
+						 colourplaces.placeButtons[i].setLocation(260+i*60, 100+ 60*counter);	
+						 done.setLocation(720, 100+ 60*counter);
 						 colourplaces.placeButtons[i].setBackground(Color.DARK_GRAY);
 						 containerForGuessedButtons[i]=container[i];
 						 
@@ -909,6 +943,17 @@ public class ItemListeners {
 					 sound.playSound("Done.wav");
 					 
 					 colours.createGuessedButtons();
+					 
+					 if(engine.white ==StartScreen.numOfPlaces )
+					 {
+						 a.label.setVisible(false);
+						 JOptionPane.showMessageDialog(null, "Ügyi !");
+					 }
+					 else if(counter==10)
+					 {
+						 
+					 }
+					 
 					 
 					 engine.white = 0;
 					 engine.black = 0;

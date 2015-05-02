@@ -24,7 +24,7 @@ public class Colours_Guessed
 	JToggleButton placeButtons[] = new JToggleButton[6];		//creates the array of places (It's maximum size is 6)
 	
 	
-	private void createSelectedButtons() 
+	public void createSelectedButtons() 
 	{
 
 		for(int i=0;i<6;i++)

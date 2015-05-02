@@ -25,6 +25,7 @@ public class ItemListeners {
 	
 	static int[] generatedNums=new int[StartScreen.numOfPlaces];
 	static int tries = 0;
+	int counter =1;	
 	
 	GameEngine engine = new GameEngine();
 	Sound sound = new Sound();
@@ -879,8 +880,8 @@ public class ItemListeners {
 		    done.setOpaque(false);
 		    a.gameWindow.add(done);
 		    
-		    backtoMenu.setSize(117, 80);
-		    backtoMenu.setLocation(50, 610);
+		    backtoMenu.setSize(100, 60);
+		    backtoMenu.setLocation(125, 610);
 		    backtoMenu.setEnabled(true);
 		    
 		    a.gameWindow.add(backtoMenu);
@@ -891,20 +892,51 @@ public class ItemListeners {
 		    	
 				 public void actionPerformed(ActionEvent e)
 				 {
-					 /*a.gameWindow.removeAll();
+					 int option = JOptionPane.showOptionDialog(null, "Are you sure you want to restart/go back to menu?","Quit", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,green, null,null);
 				
-					 String[] args1={};
-				        ProgramStart.main(args1); */
-				        //a.start.f.revalidate();
-				        //a.start.f.repaint();
-
+						if(option == JOptionPane.YES_OPTION)			
+				 		{
+							a.label.setVisible(true);
+							a.gameWindow.removeAll();
+						 	a.gameWindow.revalidate();
+						 	a.gameWindow.repaint();
+						 	a.gameWindow.setVisible(false);
+						 	//a.createGeneratedMushrooms();
+						 	a.start.firstScreen.setVisible(true);
+						 	for(int i=0; i<8; i++)
+							 {
+								colours.colourButtons[i] = null;
+							 }
+						 	for(int i=0; i<50; i++)
+							 {
+								colours.guessedButtons[i] = null;
+							 }
+						 	
+						 	for(int i=0; i<6; i++)
+							 {
+								colourplaces.placeButtons[i] = null;
+							 }
+						 	for(int i=0; i<StartScreen.numOfPlaces; i++)
+						 	{
+						 	container[i] = 0;
+						 	}
+						 	tries = 0;
+							sound.playSound("Button_Push_back.wav");	// "clicking back" sound				
+				 		}
+				 		else
+				 		{
+				 			sound.playSound("Button_Push_back.wav");	// "clicking back" sound
+				 		}
+					 	
+					 	
+					 	
 				 }
 		    });
 
 		    
 		    done.addActionListener(new ActionListener() 
 		    {
-		    	int counter =1;													//counter for the button displacements
+		    													//counter for the button displacements
 		    	
 				 public void actionPerformed(ActionEvent e)
 				 {
@@ -946,12 +978,53 @@ public class ItemListeners {
 					 
 					 if(engine.white ==StartScreen.numOfPlaces )
 					 {
+						 for(int i=0; i<StartScreen.numOfPlaces; i++)
+						 {
+						 colourplaces.placeButtons[i].setEnabled(false);
+						 }
 						 a.label.setVisible(false);
-						 JOptionPane.showMessageDialog(null, "Ügyi !");
+						 int input = JOptionPane.showConfirmDialog(null, "Nagyon ügyi!", "Win!!!", 
+								     JOptionPane.OK_OPTION, JOptionPane.CANCEL_OPTION, red);
+
+						 if(input == JOptionPane.OK_OPTION)
+						 {
+								a.label.setVisible(true);
+								a.gameWindow.removeAll();
+							 	a.gameWindow.revalidate();
+							 	a.gameWindow.repaint();
+							 	a.gameWindow.setVisible(false);
+							 	//a.createGeneratedMushrooms();
+							 	a.start.firstScreen.setVisible(true);
+							 	for(int i=0; i<8; i++)
+								 {
+									colours.colourButtons[i] = null;
+								 }
+							 	for(int i=0; i<50; i++)
+								 {
+									colours.guessedButtons[i] = null;
+								 }
+							 	
+							 	for(int i=0; i<6; i++)
+								 {
+									colourplaces.placeButtons[i] = null;
+								 }
+							 	for(int i=0; i<StartScreen.numOfPlaces; i++)
+							 	{
+							 	container[i] = 0;
+							 	}
+							 	tries = 0;
+								sound.playSound("Button_Push_back.wav");	// "clicking back" sound
+						 }
+						 //JOptionPane.showMessageDialog(null, "Ügyi !");
 					 }
 					 else if(counter==10)
 					 {
-						 
+						 for(int i=0; i<StartScreen.numOfPlaces; i++)
+						 {
+						 colourplaces.placeButtons[i].setEnabled(false);
+						 }
+						 a.label.setVisible(false);
+						 JOptionPane.showMessageDialog(null, "Game Over !");
 					 }
 					 
 					 

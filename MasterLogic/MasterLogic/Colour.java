@@ -52,7 +52,7 @@ public class Colour
 		 for(int i=0; i<StartScreen.numOfColours; i++)
 		 {
 			 
-			 colourButtons[i].setLocation(20, 80 + i*80);
+			 colourButtons[i].setLocation(30, 30 + i*80);
 			 
 			 
 			 switch(i)

@@ -12,12 +12,9 @@ public class Stick {
 	
 	int[] sticks = new int[StartScreen.numOfPlaces];
 	JButton stickButtons[] = new JButton[6];	
-	
-	
+
 	public Stick()
 	{}
-	
-	
 	
 	public void generateStickArray()
 	{

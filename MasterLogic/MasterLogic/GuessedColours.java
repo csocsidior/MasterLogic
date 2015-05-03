@@ -36,7 +36,7 @@ public class GuessedColours
 		{
 		    placeButtons[i].setSize(60, 80);
 		    placeButtons[i].setLocation(260+i*60, 100);								
-		    placeButtons[i].setBackground(Color.darkGray);		//Settings of the buttons					
+		    placeButtons[i].setBackground(Color.darkGray);		//Button settings					
 		    placeButtons[i].setForeground(Color.BLACK);
 		    placeButtons[i].setSelectedIcon(selectedGuess);
 		    instanceOfStartHandler.gameWindow.add(placeButtons[i]);

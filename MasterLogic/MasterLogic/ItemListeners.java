@@ -23,8 +23,8 @@ public class ItemListeners {
 	JButton done = new JButton("");
 	JButton backtoMenu = new JButton("Quit to menu");
 	
-	static int[] generatedNums=new int[StartScreen.numOfPlaces];
-	static int tries = 0;
+	static int[] generatedNums=new int[6];	//it has a constant size because it won't get the
+	static int tries = 0;	//size in time
 	int counter =1;	
 	
 	GameEngine engine = new GameEngine();
@@ -62,13 +62,19 @@ public class ItemListeners {
 	
 	public void generate()
 	{
+		System.out.println("/////////////The hidden numbers: //////////////");
 		for (int i = 0; i<StartScreen.numOfPlaces ; i++)
 		{
 			generatedNums[i] = (int)(Math.random() * StartScreen.numOfColours);
+			
 			System.out.print("-" + generatedNums[i]);
+			
+
 			engine.arraycheck[i]=10;
 			
 		}
+		System.out.println("");
+		System.out.println("///////////////////////////////////////////////");
 	}
 	
 	public void createItemListeners()
@@ -892,7 +898,10 @@ public class ItemListeners {
 		    	
 				 public void actionPerformed(ActionEvent e)
 				 {
-					 int option = JOptionPane.showOptionDialog(null, "Are you sure you want to restart/go back to menu?","Quit", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,green, null,null);
+					 int option = JOptionPane.showOptionDialog(null, 
+							 	  "Are you sure you want to restart/go back to menu?","Quit",
+							 	  JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,green,
+							 	  null,null);
 				
 						if(option == JOptionPane.YES_OPTION)			
 				 		{

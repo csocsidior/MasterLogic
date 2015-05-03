@@ -1,17 +1,17 @@
 package MasterLogic;
 
 import java.awt.Color;
-
 import javax.swing.JButton;
-
 
 public class Stick {
 
+	//This class is providing the Sticks. The sticks are giving feedback about the guesses
+	
 	GameEngine engine = new GameEngine();
-	StartHandler startinstance = new StartHandler();
+	StartHandler instanceOfStartHandler = new StartHandler();
 	
 	int[] sticks = new int[StartScreen.numOfPlaces];
-	JButton stickarray[] = new JButton[6];	
+	JButton stickButtons[] = new JButton[6];	
 	
 	
 	public Stick()
@@ -59,25 +59,25 @@ public class Stick {
 		for(int i = 0; i < StartScreen.numOfPlaces; i++)
 		{
 			
-			stickarray[i] = new JButton("");
-			stickarray[i].setSize(30, 30);
-			stickarray[i].setLocation(570 +(counter*30), 100+ (ItemListeners.tries*60));
+			stickButtons[i] = new JButton("");
+			stickButtons[i].setSize(30, 30);
+			stickButtons[i].setLocation(570 +(counter*30), 100+ (ItemListeners.tries*60));
 			
 			switch(sticks[i])
 			{
 			case 0: 
-				stickarray[i].setBackground(Color.BLACK);
+				stickButtons[i].setBackground(Color.BLACK);
 				break;
 			case 1: 
-				stickarray[i].setBackground(Color.WHITE);
+				stickButtons[i].setBackground(Color.WHITE);
 				break;
 			case 9: 
-				stickarray[i].setBackground(Color.GRAY);
+				stickButtons[i].setBackground(Color.GRAY);
 				break;
 			default: 
  	 			break;
 			}
-			StartHandler.gameWindow.add(stickarray[i]);
+			StartHandler.gameWindow.add(stickButtons[i]);
 			counter++;
 		}
 		

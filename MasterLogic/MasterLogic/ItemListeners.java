@@ -15,7 +15,7 @@ import javax.swing.JToggleButton;
 public class ItemListeners {
 
 	Colour colours;
-	Colours_Guessed colourplaces;
+	GuessedColours colourplaces;
 	StartHandler a;
 	static int container[] = new int[StartScreen.numOfColours];
 	static int containerForGuessedButtons[] = new int[StartScreen.numOfColours];
@@ -51,7 +51,7 @@ public class ItemListeners {
 	public ItemListeners()
 	{}
 	
-	public ItemListeners(Colour s, Colours_Guessed sb, StartHandler sbb)
+	public ItemListeners(Colour s, GuessedColours sb, StartHandler sbb)
 	{
 		colours = s;
 		colourplaces = sb;

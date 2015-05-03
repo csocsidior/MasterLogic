@@ -30,7 +30,6 @@ public class QuitHandler implements ActionListener
 					 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,green,
 					 null,null); 
 		
-		
  		if(option == JOptionPane.YES_OPTION)			//quitting the program
  		{
  			System.exit(0);								//closing the program

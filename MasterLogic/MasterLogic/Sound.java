@@ -7,6 +7,8 @@ import javax.sound.sampled.Clip;
 
 public class Sound {
 
+	//This class provides the sound effects on the buttons
+	
 	public Sound()
 	{}
 	
@@ -14,10 +16,12 @@ public class Sound {
 	 {
 	   try 
 	   {
-	    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Done).getAbsoluteFile( ));
+	    AudioInputStream audioInputStream = 
+	    AudioSystem.getAudioInputStream(new File(Done).getAbsoluteFile( ));
+	    
 	    Clip clip = AudioSystem.getClip( );
 	    clip.open(audioInputStream);
-	    clip.start( );
+	    clip.start();
 	   }
 	   catch(Exception ex)
 	   {
@@ -25,5 +29,4 @@ public class Sound {
 	     ex.printStackTrace( );
 	   }
 	 }
-	
 }

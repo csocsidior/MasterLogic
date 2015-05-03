@@ -14,10 +14,11 @@ import java.awt.event.ActionListener;
 public class StartHandler  implements ActionListener 
 
 //Handler class of the Start button
+
 {
 	StartScreen start;
 	Sound sound = new Sound();
-	Colours_Guessed colourplaces;
+	GuessedColours colourplaces;
 	
 	static JPanel gameWindow = new JPanel();
 	JLabel label = new JLabel("Mushroom code");
@@ -181,13 +182,7 @@ public class StartHandler  implements ActionListener
 		createBackgroundLabels();
 		
 		sound.playSound("Button_Push.wav");
-		
-		
-	
-	
-	
-	
-	
+
 	
 	}
 }

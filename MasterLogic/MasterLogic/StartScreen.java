@@ -14,21 +14,19 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 public class StartScreen   
-
 {	
     //Class of the Start Menu
 
 	JFrame frame = new JFrame("Test");
-	JPanel firstScreen = new JPanel();				//firstScreen
-	JLabel label = new JLabel("Mastermind");		
-		
+	JPanel firstScreen = new JPanel();					//firstScreen
 	JPanel creditsScreen = new JPanel();				//Credits panel
-	JButton credits_backButton = new JButton("Back");
-		
-	JPanel howtoScreen = new JPanel();				//How to play panel
-	JButton howto_backButton = new JButton("Back");
-		
+	JPanel howtoScreen = new JPanel();					//How to play panel
 	JPanel settingsScreen = new JPanel();				//Settings panel
+
+	JLabel settingsLabel = new JLabel("Level Settings");	
+		
+	JButton credits_backButton = new JButton("Back");
+	JButton howto_backButton = new JButton("Back");	
 	JButton settings_backButton = new JButton("Back");
 		
 	Icon button1 = new ImageIcon(StartScreen.class.getResource("b_newgame_up.png"));
@@ -38,7 +36,7 @@ public class StartScreen
 	Icon button22 = new ImageIcon(StartScreen.class.getResource("b_settings_down.png"));   
 	    
 	Icon button3 = new ImageIcon(StartScreen.class.getResource("b_howto_up.png"));
-	Icon button33 = new ImageIcon(StartScreen.class.getResource("b_howto_down.png"));    //graphical objects
+	Icon button33 = new ImageIcon(StartScreen.class.getResource("b_howto_down.png"));  //graphical objects
 	    
 	Icon button4 = new ImageIcon(StartScreen.class.getResource("b_credits_up.png"));
 	Icon button44 = new ImageIcon(StartScreen.class.getResource("b_credits_down.png"));    
@@ -58,8 +56,9 @@ public class StartScreen
 	Icon back_up = new ImageIcon(StartScreen.class.getResource("b_back_up.png"));
 	Icon back_down = new ImageIcon(StartScreen.class.getResource("b_back_down.png"));
 	
-	Icon bgroundImage = new ImageIcon(StartScreen.class.getResource("background1.png"));
-	    
+	Icon bgroundImage = new ImageIcon(StartScreen.class.getResource("mainmenu_bg.png"));
+	Icon mainmenu_logo = new ImageIcon(StartScreen.class.getResource("mainmenu_logo.png"));
+    
 	JButton newgameButton = new JButton("",button1);
 	JButton settingsButton = new JButton("",button2);
 	JButton howtoButton = new JButton("",button3);		//menu buttons
@@ -70,19 +69,20 @@ public class StartScreen
 	JToggleButton mediumButton = new JToggleButton("Medium");	// Settings\level togglebuttons
 	JToggleButton hardButton = new JToggleButton("Hard");
 	
-    JLabel imagelabel = new JLabel("", bgroundImage,JLabel.CENTER);     //label for background picture
-	
+    JLabel imagelabel = new JLabel("", bgroundImage,JLabel.CENTER);    //label for background picture
+	JLabel firstScreenLabel = new JLabel("", mainmenu_logo,JLabel.CENTER);
+	JLabel imagelabel_settings = new JLabel("", bgroundImage,JLabel.CENTER);
+	JLabel imagelabel_howto = new JLabel("", bgroundImage,JLabel.CENTER);
+	JLabel imagelabel_credits = new JLabel("", bgroundImage,JLabel.CENTER);
+    
 	static  int numOfColours=6;
 	static  int numOfPlaces=4;			//default colour&place values
 
 	Sound sound = new Sound();
-	
 
-	
 	public void defaultlevel()
 	{
-		
-		easyButton.setSelected(true);		//sets the default level easy & the easy button pressed	
+		easyButton.setSelected(true);	//sets the default level easy & the easy button pressed	
 	}
 	   
     public void buildStartMenu() 		//This function creates the whole Menu
@@ -91,31 +91,31 @@ public class StartScreen
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  	//frame settings	
         frame.setResizable(false);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation(dim.width/5-frame.getSize().width/2, dim.height/24-frame.getSize().height/2);
-        frame.setUndecorated(true);
+        frame.setLocation(dim.width/5-frame.getSize().width/2,
+        dim.height/24-frame.getSize().height/2);
+        frame.setUndecorated(false);
         frame.setVisible(true);
-        
-        System.out.println(bgroundImage.getIconHeight() + " " + bgroundImage.getIconWidth());
-        
-        imagelabel.setSize(firstScreen.getWidth(), firstScreen.getHeight());		//imagelabel for background image
+
+      //imagelabel for background image
+        imagelabel.setSize(firstScreen.getWidth(), firstScreen.getHeight());
         imagelabel.setSize(800, 700);
         firstScreen.add(imagelabel);
-
+        
         firstScreen.setLayout(null);
-        firstScreen.setVisible(true);									//firstScreen JPanel settings
+        firstScreen.setVisible(true);								//firstScreen JPanel settings
         firstScreen.setPreferredSize(new Dimension(800, 700));    
         firstScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         frame.add(firstScreen);
 
-        label.setLocation(240, 100);									//label of the firstScreen
-        label.setSize(400,200);
-        label.setFont(new java.awt.Font("Times New Roman", 1, 60));
-        label.setForeground (Color.BLACK);
-        firstScreen.add(label);   
+        firstScreenLabel.setLocation(114, 100);						//label of the firstScreen
+        firstScreenLabel.setSize(572,140);
+        firstScreenLabel.setFont(new java.awt.Font("Times New Roman", 1, 60));
+        firstScreenLabel.setForeground (Color.BLACK);
+        firstScreen.add(firstScreenLabel);   
 
         newgameButton.setRolloverIcon(button11);
         newgameButton.setSize(190, 64);
-        newgameButton.setLocation(305, 292);										// "New Game" button settings
+        newgameButton.setLocation(305, 292);					// "New Game" button settings
         newgameButton.setContentAreaFilled(false);
         newgameButton.setBorderPainted(false);
         newgameButton.setFocusPainted(false);
@@ -124,15 +124,21 @@ public class StartScreen
         settingsButton.setRolloverIcon(button22);
         settingsButton.setSize(190, 64);
         settingsButton.setLocation(305, 356);															
-        settingsButton.setContentAreaFilled(false);									// "Settings" button settings
+        settingsButton.setContentAreaFilled(false);				// "Settings" button settings
         settingsButton.setBorderPainted(false);
         settingsButton.setFocusPainted(false);
         firstScreen.add(settingsButton);	
         
+        settingsLabel.setLocation(240, 100);					//label of settingsScreen
+        settingsLabel.setSize(400,200);
+        settingsLabel.setFont(new java.awt.Font("Times New Roman", 1, 60));
+        settingsLabel.setForeground (Color.BLACK);
+        settingsScreen.add(settingsLabel);
+        
         howtoButton.setRolloverIcon(button33);
         howtoButton.setSize(190, 64);
         howtoButton.setLocation(305, 420);
-        howtoButton.setContentAreaFilled(false);									// "How to Play" button settings
+        howtoButton.setContentAreaFilled(false);				// "How to Play" button settings
         howtoButton.setBorderPainted(false);
         howtoButton.setFocusPainted(false);
         firstScreen.add(howtoButton);
@@ -140,7 +146,7 @@ public class StartScreen
         creditsButton.setRolloverIcon(button44);
         creditsButton.setSize(190, 64);
         creditsButton.setLocation(305, 484);
-        creditsButton.setContentAreaFilled(false);									// "Credits" button settings
+        creditsButton.setContentAreaFilled(false);				// "Credits" button settings
         creditsButton.setBorderPainted(false);
         creditsButton.setFocusPainted(false);
         firstScreen.add(creditsButton);
@@ -148,12 +154,14 @@ public class StartScreen
         quitButton.setRolloverIcon(button55);
         quitButton.setSize(190, 64);
         quitButton.setLocation(305, 548);
-        quitButton.setContentAreaFilled(false);									//"Quit" button settings
+        quitButton.setContentAreaFilled(false);					//"Quit" button settings
         quitButton.setBorderPainted(false);
         quitButton.setFocusPainted(false);
         firstScreen.add(quitButton);
 
-        firstScreen.setComponentZOrder(imagelabel, firstScreen.getComponentCount()-1);	//sets the Z-order of different components on the Jpanels
+      //sets the Z-order of different components on the Jpanels
+        firstScreen.setComponentZOrder(imagelabel, 
+        firstScreen.getComponentCount()-1);	
         }
   
     public void startquitHandler()				// This function creates action listener on  
@@ -165,7 +173,8 @@ public class StartScreen
         quitButton.addActionListener(click_quit);
        }
 
-     public void startMenu_ActionListeners ()	// startMenu ActionListeners >> button action listeners >> 
+     public void startMenu_ActionListeners ()	// startMenu ActionListeners >> 
+     											//button action listeners >> 
      											// actionperformed functions
         { 
 	        settingsButton.addActionListener(new ActionListener() 
@@ -175,17 +184,19 @@ public class StartScreen
 					 firstScreen.setVisible(false);
 					 firstScreen.invalidate();				//clearing window
 					 
+					 imagelabel_settings.setSize(settingsScreen.getWidth(), settingsScreen.getHeight());
+					 imagelabel_settings.setSize(800, 700);
+
 					 settingsScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 					 settingsScreen.setLayout(null);
-				     settingsScreen.setVisible(true);					//Change to settingsScreen & create back button
+				     settingsScreen.setVisible(true);	//Change to settingsScreen & create back button
 				     settingsScreen.setBackground(Color.darkGray);
 				     settingsScreen.setPreferredSize(new Dimension(800, 700));
+				     settingsScreen.add(imagelabel_settings);
 					 frame.add(settingsScreen);
-					 
-					 System.out.println("clear");
-					 
+
 					 settings_backButton.setSize(117, 64);
-				     settings_backButton.setLocation(50, 610);			//back button settings
+				     settings_backButton.setLocation(50, 610);		//back button settings
 				     settings_backButton.setIcon(back_up);
 				     settings_backButton.setRolloverIcon(back_down);
 				     settings_backButton.setContentAreaFilled(false);
@@ -194,10 +205,10 @@ public class StartScreen
 				     settingsScreen.add(settings_backButton);
 				     
 				     easyButton.setSize(190,64);
-				     easyButton.setLocation(305,100);
+				     easyButton.setLocation(305,300);
 				     easyButton.setToolTipText("<html><img src=\"" +
-			    	      	  StartScreen.class.getResource("green.png") +
-			    	          "\"> bla ");
+			    	      	  StartScreen.class.getResource("tooltiptext_easy.png") +
+			    	          "\"");
 				     easyButton.setIcon(easy_up);
 				     easyButton.setSelectedIcon(easy_down);
 				     easyButton.setContentAreaFilled(false);
@@ -205,10 +216,10 @@ public class StartScreen
 				     easyButton.setOpaque(false);
 				     
 				     mediumButton.setSize(190,64);
-				     mediumButton.setLocation(305,200);
+				     mediumButton.setLocation(305,400);
 				     mediumButton.setToolTipText("<html><img src=\"" +
-				    	      	  StartScreen.class.getResource("red.png") +
-				    	          "\"> Number of Mushrooms ");
+				    	      	  StartScreen.class.getResource("tooltiptext_medium.png") +
+				    	          "\"");
 				     mediumButton.setIcon(medium_up);				//level buttons settings
 				     mediumButton.setSelectedIcon(medium_down);
 				     mediumButton.setContentAreaFilled(false);
@@ -216,8 +227,10 @@ public class StartScreen
 				     mediumButton.setOpaque(false);
 				     
 				     hardButton.setSize(190,64);
-				     hardButton.setLocation(305,300);
-				     hardButton.setToolTipText("blablabla");
+				     hardButton.setLocation(305,500);
+				     hardButton.setToolTipText("<html><img src=\"" +
+			    	      	  StartScreen.class.getResource("tooltiptext_hard.png") +
+			    	          "\"");
 				     hardButton.setIcon(hard_up);
 				     hardButton.setSelectedIcon(hard_down);
 				     hardButton.setContentAreaFilled(false);
@@ -228,28 +241,29 @@ public class StartScreen
 				     settingsScreen.add(easyButton);
 				     settingsScreen.add(hardButton);
 				  
-					 sound.playSound("Button_Push.wav");
+					 sound.playSound("button_push.wav");
+					 System.out.println("clear");
 					 
+					 settingsScreen.setComponentZOrder(imagelabel_settings, 
+					 settingsScreen.getComponentCount()-1);	
+					  
 					 frame.pack();
 				 }
 	        }
 	        );
-	        
 	        settings_backButton.addActionListener(new ActionListener() 
 	        {
 				 public void actionPerformed(ActionEvent e)
 				 {
 					 System.out.println("back");
-					 
 					 settingsScreen.setVisible(false);
-					 firstScreen.setLayout(null);	//Action Listener on Back button -> go back to firstScreen
+					 firstScreen.setLayout(null);//Action Listener on Back button -> go back to firstScreen
 					 firstScreen.setVisible(true);
 					 firstScreen.setPreferredSize(new Dimension(800, 700));
-					 sound.playSound("Button_Push_back.wav");
+					 sound.playSound("button_push_back.wav");
 				 }
 			 }
 			 );
-
 	        howtoButton.addActionListener(new ActionListener() 
 	        {
 				 public void actionPerformed(ActionEvent e)
@@ -257,15 +271,17 @@ public class StartScreen
 					 firstScreen.setVisible(false);
 					 firstScreen.invalidate();
 					 
+					 imagelabel_howto.setSize(howtoScreen.getWidth(), howtoScreen.getHeight());
+					 imagelabel_howto.setSize(800, 700);
+					 
 					 howtoScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 					 howtoScreen.setLayout(null);
 				     howtoScreen.setVisible(true);
 				     howtoScreen.setBackground(Color.darkGray);
 				     howtoScreen.setPreferredSize(new Dimension(800, 700));
+				     howtoScreen.add(imagelabel_howto);
 					 frame.add(howtoScreen);
-					 
-					 System.out.println("clear");
-					 
+
 					 howto_backButton.setSize(117, 64);
 				     howto_backButton.setLocation(50, 610);
 				     howto_backButton.setIcon(back_up);
@@ -275,89 +291,67 @@ public class StartScreen
 				     howto_backButton.setOpaque(false);
 				     howtoScreen.add(howto_backButton);
 					 
-				     sound.playSound("Button_Push.wav");
+				     sound.playSound("button_push.wav");
+				     System.out.println("clear");
+				     
+				     howtoScreen.setComponentZOrder(imagelabel_howto, 
+				     howtoScreen.getComponentCount()-1);	
 				     
 					 frame.pack();
 				 }
 	        }
 	        );
-	        
 	        easyButton.addItemListener(new ItemListener() 
 		    {
 		    	   public void itemStateChanged(ItemEvent press) 
 		    	   {
 		    	      if(press.getStateChange()==ItemEvent.SELECTED)
 		    	      {
-		    	    	  //level_Easy.setBackground(Color.DARK_GRAY);
-		    	    	  
 		    	    	  mediumButton.setSelected(false);
 		    	    	  hardButton.setSelected(false);
 		    	    	  
 		    	    	  numOfColours = 6;
 		    	    	  numOfPlaces = 4;
 		    	    	  
-		    	    	  sound.playSound("Button_Push.wav");
-		    	    	  
+		    	    	  sound.playSound("button_push.wav");
 		    	    	  System.out.println("Colours:"+ numOfColours + "	Places:" + numOfPlaces );
 		    	      } 																		 
-		    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
-		    	      {
-		    	    	  //level_Easy.setBackground(Color.GRAY);
-		    	      }
 		    	   }
 		    	});
-	     
-	     
 	     mediumButton.addItemListener(new ItemListener() 
 		    {
 		    	   public void itemStateChanged(ItemEvent press) 
 		    	   {
 		    	      if(press.getStateChange()==ItemEvent.SELECTED)
 		    	      {
-		    	    	  //level_Medium.setBackground(Color.DARK_GRAY);	
-		    	    	  
 		    	    	  easyButton.setSelected(false);
 		    	    	  hardButton.setSelected(false);
 		    	    	  
 		    	    	  numOfColours = 7;
 		    	    	  numOfPlaces = 5;
 		    	    	  
-		    	    	  sound.playSound("Button_Push.wav");
-		    	    	  
+		    	    	  sound.playSound("button_push.wav");
 		    	    	  System.out.println("Colours:"+ numOfColours + "	Places:" + numOfPlaces );
 		    	      } 																		 
-		    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
-		    	      {
-		    	    	  //level_Medium.setBackground(Color.GRAY);
-		    	      }
 		    	   }
 		    	});
-	     
 	     hardButton.addItemListener(new ItemListener() 
 		    {
 		    	   public void itemStateChanged(ItemEvent press) 
 		    	   {
 		    	      if(press.getStateChange()==ItemEvent.SELECTED)
 		    	      {
-		    	    	  //level_Hard.setBackground(Color.DARK_GRAY);	
-		    	    	  
 		    	    	  easyButton.setSelected(false);
 		    	    	  mediumButton.setSelected(false);
 		    	    	  
 		    	    	  numOfColours = 8;
 		    	    	  numOfPlaces = 6;
 		    	    	  
-		    	    	  sound.playSound("Button_Push.wav");
-
+		    	    	  sound.playSound("button_push.wav");
 		    	    	  System.out.println("Colours:"+ numOfColours + "	Places:" + numOfPlaces );
 		    	      } 																		 
-		    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
-		    	      {
-		    	    	  //level_Hard.setBackground(Color.GRAY);
-		    	      }
 		    	   }
 		    	});
-	     
 	        howto_backButton.addActionListener(new ActionListener() 
 	        {
 				 public void actionPerformed(ActionEvent e)
@@ -368,22 +362,18 @@ public class StartScreen
 					 firstScreen.setLayout(null);
 					 firstScreen.setVisible(true);
 					 firstScreen.setPreferredSize(new Dimension(800, 700));
-					 sound.playSound("Button_Push_back.wav");
+					 sound.playSound("button_push_back.wav");
 				 }
 			 }
 			 );
-
 	        creditsButton.addActionListener(new ActionListener() 
 	        {
-	    		
 				 public void actionPerformed(ActionEvent e)
 				 {
 					 firstScreen.setVisible(false);
 					 firstScreen.invalidate();
-					 
-					 JLabel imagelabel_credits = new JLabel("", bgroundImage,JLabel.CENTER);
-					 imagelabel_credits.setSize(500, 450);
-					 imagelabel_credits.setLocation(150,100);
+
+					 imagelabel_credits.setSize(800, 700);
 				     creditsScreen.add(imagelabel_credits);
 					 
 					 creditsScreen.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
@@ -392,9 +382,7 @@ public class StartScreen
 				     creditsScreen.setBackground(Color.darkGray);
 				     creditsScreen.setPreferredSize(new Dimension(800, 700));
 					 frame.add(creditsScreen);
-					 
-					 System.out.println("clear");
-					 
+
 					 credits_backButton.setSize(117, 64);
 				     credits_backButton.setLocation(50, 610);
 				     credits_backButton.setIcon(back_up);
@@ -404,13 +392,16 @@ public class StartScreen
 				     credits_backButton.setOpaque(false);
 				     creditsScreen.add(credits_backButton);
 					
-				     sound.playSound("Button_Push.wav");
+				     sound.playSound("button_push.wav");
+					 System.out.println("clear");
+					 
+					 creditsScreen.setComponentZOrder(imagelabel_credits, 
+					 creditsScreen.getComponentCount()-1);	
 				     
 					 frame.pack();
 				 }
 	        }
 	        );
-        
 	        credits_backButton.addActionListener(new ActionListener() 
 	        {
 				 public void actionPerformed(ActionEvent e)
@@ -421,11 +412,10 @@ public class StartScreen
 					 firstScreen.setLayout(null);
 					 firstScreen.setVisible(true);
 					 firstScreen.setPreferredSize(new Dimension(800, 700));
-					 sound.playSound("Button_Push_back.wav");
+					 sound.playSound("button_push_back.wav");
 				 }
 				 }
 			 );
-
         frame.pack();
         }
 }

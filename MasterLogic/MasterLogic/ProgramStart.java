@@ -1,13 +1,11 @@
 package MasterLogic;
 
-
 public class ProgramStart 
-		{        //main
+{        //main
 
 	//This class calls the functions that are responsible for building the main menu
 	
 	public static void main(String[] args) 
-	
 		{
 			StartScreen mainMenu = new StartScreen();  //instance of StartScreen
 
@@ -17,7 +15,7 @@ public class ProgramStart
 	         mainMenu.defaultlevel();			//sets the numberOfColours and numberOfPlaces 
 	         									//variables to default
     	}
-	    }
+}
 	         
 	
 

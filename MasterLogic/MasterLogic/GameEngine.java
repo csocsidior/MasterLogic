@@ -19,24 +19,18 @@ public class GameEngine
 	
 	public GameEngine()
 	{}							//constructor with no parameter
-	
 	public  void check()		//checking algorithm
 	{
-		
 	System.out.println();
 	for (int i = 0; i< StartScreen.numOfPlaces ; i++)
 	{
-		
 		System.out.print(ItemListeners.container[i]); //container is always filled up with
 													  //the guesses
 	}
-	
 	for (int i = 0; i<StartScreen.numOfPlaces ; i++)
 	{
 		generatedTempNums[i] = ItemListeners.generatedNums[i] ; //this array contains the generated 
-																//random numbers
-	}
-
+	}															//random numbers
 	for (int i = 0; i<StartScreen.numOfPlaces ; i++)
 	{
 		if (ItemListeners.container[i] == generatedTempNums[i] ) //comparing
@@ -49,7 +43,6 @@ public class GameEngine
 			//these values will prevent to find another match. 
 		}
 	}
-	
 	for (int i = 0; i<StartScreen.numOfPlaces ; i++)
 	{
 		for (int j = 0; j<StartScreen.numOfPlaces ; j++)
@@ -69,7 +62,6 @@ public class GameEngine
 	tempblack = black;
 	tempwhite = white;
 	tempnomatch = nomatch;
-
 	}	
 }
 		

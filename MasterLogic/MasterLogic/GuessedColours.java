@@ -8,8 +8,7 @@ import javax.swing.JToggleButton;
 
 public class GuessedColours 
 	{
-
-	StartHandler instanceOfStartHandler;
+	StartHandler instanceOfStartHandler;   // instance of StartHandler
 	
 	// selectedGuess.png provides the selectedIcon in case the button is not empty
 	ImageIcon selectedGuess = new ImageIcon(Colour.class.getResource("selectedGuess.png"));
@@ -18,12 +17,9 @@ public class GuessedColours
 	{
 		instanceOfStartHandler = s;			//this class gets the createSelectedButtons()
 		createSelectedButtons();			// function with this constructor
-		
 	}
-
 	JToggleButton placeButtons[] = new JToggleButton[6];   //creates the array of places 
 														   //(It's maximum size is 6)
-	
 	public void createSelectedButtons() 
 	{
 
@@ -31,7 +27,6 @@ public class GuessedColours
 		{
 			placeButtons[i] = new JToggleButton("");		//creating the components
 		}
-		
 		for(int i=0;i<StartScreen.numOfPlaces;i++)
 		{
 		    placeButtons[i].setSize(60, 80);
@@ -39,12 +34,9 @@ public class GuessedColours
 		    placeButtons[i].setBackground(Color.darkGray);		//Button settings					
 		    placeButtons[i].setForeground(Color.BLACK);
 		    placeButtons[i].setSelectedIcon(selectedGuess);
-		    instanceOfStartHandler.gameWindow.add(placeButtons[i]);
+		    StartHandler.gameWindow.add(placeButtons[i]);
 		} 
 	}
-	
-
-	
 	}
 	
 	

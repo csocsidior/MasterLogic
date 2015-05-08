@@ -3,9 +3,6 @@ package MasterLogic;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,13 +15,8 @@ public class QuitHandler implements ActionListener
 
 	public void actionPerformed(ActionEvent event)
 		{
-		sound.playSound("Button_Push.wav");				//clicking sound
-		
-		
-		 //UIManager.put("OptionPane.background", Color.GREEN);
-		 //UIManager.put("Panel.background", Color.GREEN);
-		
-		
+		sound.playSound("button_push.wav");				//clicking sound
+
 		int option = JOptionPane.showOptionDialog(null,
 					 "Are you sure you want to quit?","Quit", 
 					 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,green,
@@ -36,7 +28,7 @@ public class QuitHandler implements ActionListener
  		}
  		else
  		{
- 			sound.playSound("Button_Push_back.wav");	// "clicking back" sound
+ 			sound.playSound("button_push_back.wav");	// "clicking back" sound
  		}
 		}
 }

@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
-
 public class ItemListeners {
 
 	Colour colours;
@@ -22,6 +21,7 @@ public class ItemListeners {
 	
 	JButton done = new JButton("");
 	JButton backtoMenu = new JButton("Quit to menu");
+	JToggleButton mute = new JToggleButton();
 	
 	static int[] generatedNums=new int[6];	//it has a constant size because it won't get the
 	static int tries = 0;	//size in time
@@ -33,21 +33,19 @@ public class ItemListeners {
 	
 	Icon green = new ImageIcon(Colour.class.getResource("green.png"));
 	Icon red = new ImageIcon(Colour.class.getResource("red.png"));
-	
-	Icon green_glow = new ImageIcon(Colour.class.getResource("green_glow.png"));
-	Icon red_glow = new ImageIcon(Colour.class.getResource("red_glow.png"));
-	
 	Icon orange = new ImageIcon(Colour.class.getResource("orange.png"));
-	Icon orange_glow = new ImageIcon(Colour.class.getResource("orange_glow.png"));
-	
 	Icon blue = new ImageIcon(Colour.class.getResource("blue.png"));
-	Icon blue_flow = new ImageIcon(Colour.class.getResource("blue_glow.png"));
-	
+	Icon purple = new ImageIcon(Colour.class.getResource("purple.png"));
+	Icon yellow = new ImageIcon(Colour.class.getResource("yellow.png"));
+	Icon white = new ImageIcon(Colour.class.getResource("white.png"));
+	Icon brown = new ImageIcon(Colour.class.getResource("brown.png"));
+
 	Icon b_done_disabled = new ImageIcon(StartScreen.class.getResource("b_done_disabled.png"));
 	Icon b_done_down = new ImageIcon(StartScreen.class.getResource("b_done_down.png"));
 	Icon b_done_up = new ImageIcon(StartScreen.class.getResource("b_done_up.png"));
-
 	
+	static boolean stateOfMute=true;
+
 	public ItemListeners()
 	{}
 	
@@ -57,9 +55,7 @@ public class ItemListeners {
 		colourplaces = sb;
 		a = sbb;
 	}
-	
-	
-	
+
 	public void generate()
 	{
 		System.out.println("/////////////The hidden numbers: //////////////");
@@ -68,8 +64,6 @@ public class ItemListeners {
 			generatedNums[i] = (int)(Math.random() * StartScreen.numOfColours);
 			
 			System.out.print("-" + generatedNums[i]);
-			
-
 			engine.arraycheck[i]=10;
 			
 		}
@@ -91,9 +85,8 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colour0 is selected");								//Itemlistenerjei a színeknek  	
-	    	        
-	    	        
+	    	        //System.out.println("colour0 is selected");			//Itemlistenerjei a színeknek  	
+
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=0)
@@ -119,13 +112,10 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
+
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -154,7 +144,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 		
@@ -206,7 +196,12 @@ public class ItemListeners {
 		    			        	done.setEnabled(true);
 		    			        }
 		    			        
-		    			        colourplaces.placeButtons[i].setBackground(Color.WHITE);	
+		    			        colourplaces.placeButtons[i].setIcon(purple);
+		    			        colourplaces.placeButtons[i].setDisabledIcon(purple);
+		    			        colourplaces.placeButtons[i].setPressedIcon(purple);
+		    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+		    			        colourplaces.placeButtons[i].setBorderPainted(false);
+		    			        colourplaces.placeButtons[i].setOpaque(false);	
 		    	        	}
 		    	        }
 		    	      } 
@@ -222,7 +217,7 @@ public class ItemListeners {
 		    	        	}
 		    	        }
 		    	      }
-		    	      sound.playSound("place_sound.wav");
+		    	      sound.playSound("ticksound.wav");
 		    	   }
 		    	});
 		 
@@ -297,7 +292,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 
@@ -371,7 +366,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 
@@ -424,7 +419,7 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        //colourplaces.placeButtons[i].setBackground(Color.GREEN);	
+	    			        	
 	    			        colourplaces.placeButtons[i].setIcon(green);
 	    			        colourplaces.placeButtons[i].setDisabledIcon(green);
 	    			        colourplaces.placeButtons[i].setPressedIcon(green);
@@ -446,7 +441,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 
@@ -499,7 +494,12 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        colourplaces.placeButtons[i].setBackground(Color.BLACK);	
+	    			        colourplaces.placeButtons[i].setIcon(yellow);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(yellow);
+	    			        colourplaces.placeButtons[i].setPressedIcon(yellow);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);	
 	    	        	}
 	    	        }
 	    	      } 
@@ -515,7 +515,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 
@@ -568,7 +568,12 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        colourplaces.placeButtons[i].setBackground(Color.ORANGE);	
+	    			        colourplaces.placeButtons[i].setIcon(white);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(white);
+	    			        colourplaces.placeButtons[i].setPressedIcon(white);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);		
 	    	        	}
 	    	        }
 	    	      } 
@@ -584,7 +589,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 
@@ -636,7 +641,12 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        colourplaces.placeButtons[i].setBackground(Color.PINK);	
+	    			        colourplaces.placeButtons[i].setIcon(brown);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(brown);
+	    			        colourplaces.placeButtons[i].setPressedIcon(brown);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);
 	    	        	}
 	    	        }
 	    	      } 
@@ -652,7 +662,7 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      sound.playSound("place_sound.wav");
+	    	      sound.playSound("ticksound.wav");
 	    	   }
 	    	});
 		
@@ -887,15 +897,31 @@ public class ItemListeners {
 		    a.gameWindow.add(done);
 		    
 		    backtoMenu.setSize(100, 60);
-		    backtoMenu.setLocation(125, 610);
+		    backtoMenu.setLocation(670, 620);
 		    backtoMenu.setEnabled(true);
-		    
 		    a.gameWindow.add(backtoMenu);
+		    
+		    mute.setSize(40, 40);
+		    mute.setLocation(630, 620);
+	        a.gameWindow.add(mute);
 	        
+	        mute.addItemListener(new ItemListener() 
+			 {
+	        	public void itemStateChanged(ItemEvent press) 
+		    	   {
+	        		if(press.getStateChange()==ItemEvent.SELECTED)
+		    	      {
+	        			stateOfMute = false;
+		    	      }
+	        		else if(press.getStateChange()==ItemEvent.DESELECTED)
+		    	      {
+	        			stateOfMute = true;
+		    	      }
+		    	   }
+			 });
 		    
 		    backtoMenu.addActionListener(new ActionListener() 
 		    {
-		    	
 				 public void actionPerformed(ActionEvent e)
 				 {
 					 int option = JOptionPane.showOptionDialog(null, 
@@ -905,7 +931,7 @@ public class ItemListeners {
 				
 						if(option == JOptionPane.YES_OPTION)			
 				 		{
-							a.label.setVisible(true);
+							a.coverlabel.setVisible(true);
 							a.gameWindow.removeAll();
 						 	a.gameWindow.revalidate();
 						 	a.gameWindow.repaint();
@@ -930,11 +956,11 @@ public class ItemListeners {
 						 	container[i] = 0;
 						 	}
 						 	tries = 0;
-							sound.playSound("Button_Push_back.wav");	// "clicking back" sound				
+							sound.playSound("button_push_back.wav");	// "clicking back" sound				
 				 		}
 				 		else
 				 		{
-				 			sound.playSound("Button_Push_back.wav");	// "clicking back" sound
+				 			sound.playSound("button_push_back.wav");	// "clicking back" sound
 				 		}
 					 	
 					 	
@@ -981,7 +1007,7 @@ public class ItemListeners {
 					 stickInstance.generateSticks();
 					
 					 System.out.println("Try :" + tries);
-					 sound.playSound("Done.wav");
+					 sound.playSound("button_push.wav");
 					 
 					 colours.createGuessedButtons();
 					 
@@ -991,13 +1017,13 @@ public class ItemListeners {
 						 {
 						 colourplaces.placeButtons[i].setEnabled(false);
 						 }
-						 a.label.setVisible(false);
+						 a.coverlabel.setVisible(false);
 						 int input = JOptionPane.showConfirmDialog(null, "Nagyon ügyi!", "Win!!!", 
 								     JOptionPane.OK_OPTION, JOptionPane.CANCEL_OPTION, red);
 
 						 if(input == JOptionPane.OK_OPTION)
 						 {
-								a.label.setVisible(true);
+								a.coverlabel.setVisible(true);
 								a.gameWindow.removeAll();
 							 	a.gameWindow.revalidate();
 							 	a.gameWindow.repaint();
@@ -1020,9 +1046,9 @@ public class ItemListeners {
 							 	for(int i=0; i<StartScreen.numOfPlaces; i++)
 							 	{
 							 	container[i] = 0;
-							 	}
+							 	}			
 							 	tries = 0;
-								sound.playSound("Button_Push_back.wav");	// "clicking back" sound
+								sound.playSound("button_push_back.wav");	// "clicking back" sound
 						 }
 						 //JOptionPane.showMessageDialog(null, "Ügyi !");
 					 }
@@ -1032,7 +1058,7 @@ public class ItemListeners {
 						 {
 						 colourplaces.placeButtons[i].setEnabled(false);
 						 }
-						 a.label.setVisible(false);
+						 a.coverlabel.setVisible(false);
 						 JOptionPane.showMessageDialog(null, "Game Over !");
 					 }
 					 

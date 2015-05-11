@@ -1,6 +1,6 @@
 package MasterLogic;
 
-import java.awt.Color;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
@@ -11,7 +11,9 @@ public class GuessedColours
 	StartHandler instanceOfStartHandler;   // instance of StartHandler
 	
 	// selectedGuess.png provides the selectedIcon in case the button is not empty
-	ImageIcon selectedGuess = new ImageIcon(Colour.class.getResource("selectedGuess.png"));
+	Icon backOfMush = new ImageIcon(StartScreen.class.getResource("dirt.png"));
+	Icon selectedGuess = new ImageIcon(StartScreen.class.getResource("dirt_selected.png"));
+	
 	
 	public GuessedColours(StartHandler s)
 	{
@@ -26,15 +28,20 @@ public class GuessedColours
 		for(int i=0;i<6;i++)
 		{
 			placeButtons[i] = new JToggleButton("");		//creating the components
+			
 		}
 		for(int i=0;i<StartScreen.numOfPlaces;i++)
 		{
 		    placeButtons[i].setSize(60, 80);
-		    placeButtons[i].setLocation(260+i*60, 100);								
-		    placeButtons[i].setBackground(Color.darkGray);		//Button settings					
-		    placeButtons[i].setForeground(Color.BLACK);
+		    placeButtons[i].setLocation(260+i*60, 110);		
+		    placeButtons[i].setIcon(backOfMush);
+		    placeButtons[i].setDisabledIcon(backOfMush);	//setting the icon
+		    placeButtons[i].setPressedIcon(backOfMush);
+		    placeButtons[i].setContentAreaFilled(false);
+		    placeButtons[i].setBorderPainted(false); //these 3 settings are making the
+		    placeButtons[i].setOpaque(false);			
 		    placeButtons[i].setSelectedIcon(selectedGuess);
-		    StartHandler.gameWindow.add(placeButtons[i]);
+		    StartHandler.gameWindow.add(placeButtons[i]);  
 		} 
 	}
 	}

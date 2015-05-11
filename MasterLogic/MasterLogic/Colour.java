@@ -157,7 +157,7 @@ public class Colour
 		for(int i=0;i<StartScreen.numOfPlaces;i++)
 		{
 			guessedButtons[i] = new JToggleButton("");
-			guessedButtons[i].setLocation(300+i*40, 100+(ItemListeners.tries*60));
+			guessedButtons[i].setLocation(300+i*40, 110+(ItemListeners.tries*60));
 			
 			 switch(ItemListeners.containerForGuessedButtons[i]) //copying the values from 
 			 {													 //the placeButtons to the guessedButtons
@@ -229,7 +229,10 @@ public class Colour
 			 }
 			 guessedButtons[i].setSize(36, 49);
 			 StartHandler.gameWindow.add(guessedButtons[i]);
+			 
 		}
+		StartHandler.gameWindow.setComponentZOrder(StartHandler.imagelabel, 
+		StartHandler.gameWindow.getComponentCount()-1);	
 	}
 
 	public void createItemListeners()   //creating instance of ItemListeners

@@ -21,9 +21,7 @@ public class StartScreen
 	JPanel firstScreen = new JPanel();					//firstScreen
 	JPanel creditsScreen = new JPanel();				//Credits panel
 	JPanel howtoScreen = new JPanel();					//How to play panel
-	JPanel settingsScreen = new JPanel();				//Settings panel
-
-	JLabel settingsLabel = new JLabel("Level Settings");	
+	JPanel settingsScreen = new JPanel();				//Settings panel	
 		
 	JButton credits_backButton = new JButton("Back");
 	JButton howto_backButton = new JButton("Back");	
@@ -58,7 +56,12 @@ public class StartScreen
 	
 	Icon bgroundImage = new ImageIcon(StartScreen.class.getResource("mainmenu_bg.png"));
 	Icon mainmenu_logo = new ImageIcon(StartScreen.class.getResource("mainmenu_logo.png"));
+	
+	Icon howtoIcon = new ImageIcon(StartScreen.class.getResource("howto.png"));
+	Icon settingsH = new ImageIcon(StartScreen.class.getResource("settings_header.png"));
     
+	Icon credits = new ImageIcon(StartScreen.class.getResource("credits.png"));
+	
 	JButton newgameButton = new JButton("",button1);
 	JButton settingsButton = new JButton("",button2);
 	JButton howtoButton = new JButton("",button3);		//menu buttons
@@ -74,7 +77,10 @@ public class StartScreen
 	JLabel imagelabel_settings = new JLabel("", bgroundImage,JLabel.CENTER);
 	JLabel imagelabel_howto = new JLabel("", bgroundImage,JLabel.CENTER);
 	JLabel imagelabel_credits = new JLabel("", bgroundImage,JLabel.CENTER);
-    
+	JLabel howto = new JLabel("", howtoIcon,JLabel.CENTER);
+	JLabel settingsHeader = new JLabel("", settingsH,JLabel.CENTER);
+	JLabel creditslabel = new JLabel("", credits,JLabel.CENTER);
+
 	static  int numOfColours=6;
 	static  int numOfPlaces=4;			//default colour&place values
 
@@ -96,7 +102,7 @@ public class StartScreen
         frame.setUndecorated(false);
         frame.setVisible(true);
 
-      //imagelabel for background image
+      //imageLabel for background image
         imagelabel.setSize(firstScreen.getWidth(), firstScreen.getHeight());
         imagelabel.setSize(800, 700);
         firstScreen.add(imagelabel);
@@ -108,7 +114,7 @@ public class StartScreen
         frame.add(firstScreen);
 
         firstScreenLabel.setLocation(114, 100);						//label of the firstScreen
-        firstScreenLabel.setSize(572,140);
+        firstScreenLabel.setSize(600,140);
         firstScreenLabel.setFont(new java.awt.Font("Times New Roman", 1, 60));
         firstScreenLabel.setForeground (Color.BLACK);
         firstScreen.add(firstScreenLabel);   
@@ -128,12 +134,6 @@ public class StartScreen
         settingsButton.setBorderPainted(false);
         settingsButton.setFocusPainted(false);
         firstScreen.add(settingsButton);	
-        
-        settingsLabel.setLocation(240, 100);					//label of settingsScreen
-        settingsLabel.setSize(400,200);
-        settingsLabel.setFont(new java.awt.Font("Times New Roman", 1, 60));
-        settingsLabel.setForeground (Color.BLACK);
-        settingsScreen.add(settingsLabel);
         
         howtoButton.setRolloverIcon(button33);
         howtoButton.setSize(190, 64);
@@ -158,6 +158,10 @@ public class StartScreen
         quitButton.setBorderPainted(false);
         quitButton.setFocusPainted(false);
         firstScreen.add(quitButton);
+        
+        settingsHeader.setSize(300, 155);
+        settingsHeader.setLocation(260, 50);
+        settingsScreen.add(settingsHeader);
 
       //sets the Z-order of different components on the Jpanels
         firstScreen.setComponentZOrder(imagelabel, 
@@ -195,7 +199,7 @@ public class StartScreen
 				     settingsScreen.add(imagelabel_settings);
 					 frame.add(settingsScreen);
 
-					 settings_backButton.setSize(117, 64);
+					 settings_backButton.setSize(130, 64);
 				     settings_backButton.setLocation(50, 610);		//back button settings
 				     settings_backButton.setIcon(back_up);
 				     settings_backButton.setRolloverIcon(back_down);
@@ -204,7 +208,7 @@ public class StartScreen
 				     settings_backButton.setOpaque(false);
 				     settingsScreen.add(settings_backButton);
 				     
-				     easyButton.setSize(190,64);
+				     easyButton.setSize(200,64);
 				     easyButton.setLocation(305,300);
 				     easyButton.setToolTipText("<html><img src=\"" +
 			    	      	  StartScreen.class.getResource("tooltiptext_easy.png") +
@@ -215,7 +219,7 @@ public class StartScreen
 				     easyButton.setBorderPainted(false);
 				     easyButton.setOpaque(false);
 				     
-				     mediumButton.setSize(190,64);
+				     mediumButton.setSize(200,64);
 				     mediumButton.setLocation(305,400);
 				     mediumButton.setToolTipText("<html><img src=\"" +
 				    	      	  StartScreen.class.getResource("tooltiptext_medium.png") +
@@ -226,7 +230,7 @@ public class StartScreen
 				     mediumButton.setBorderPainted(false);
 				     mediumButton.setOpaque(false);
 				     
-				     hardButton.setSize(190,64);
+				     hardButton.setSize(200,64);
 				     hardButton.setLocation(305,500);
 				     hardButton.setToolTipText("<html><img src=\"" +
 			    	      	  StartScreen.class.getResource("tooltiptext_hard.png") +
@@ -282,7 +286,7 @@ public class StartScreen
 				     howtoScreen.add(imagelabel_howto);
 					 frame.add(howtoScreen);
 
-					 howto_backButton.setSize(117, 64);
+					 howto_backButton.setSize(130, 64);
 				     howto_backButton.setLocation(50, 610);
 				     howto_backButton.setIcon(back_up);
 				     howto_backButton.setRolloverIcon(back_down);
@@ -294,6 +298,10 @@ public class StartScreen
 				     sound.playSound("button_push.wav");
 				     System.out.println("clear");
 				     
+				     howto.setSize(500, 600);
+				     howto.setLocation(160, 5);
+				     howtoScreen.add(howto);
+
 				     howtoScreen.setComponentZOrder(imagelabel_howto, 
 				     howtoScreen.getComponentCount()-1);	
 				     
@@ -383,7 +391,7 @@ public class StartScreen
 				     creditsScreen.setPreferredSize(new Dimension(800, 700));
 					 frame.add(creditsScreen);
 
-					 credits_backButton.setSize(117, 64);
+					 credits_backButton.setSize(130, 64);
 				     credits_backButton.setLocation(50, 610);
 				     credits_backButton.setIcon(back_up);
 				     credits_backButton.setRolloverIcon(back_down);
@@ -391,6 +399,10 @@ public class StartScreen
 				     credits_backButton.setBorderPainted(false);
 				     credits_backButton.setOpaque(false);
 				     creditsScreen.add(credits_backButton);
+				     
+				     creditslabel.setSize(600,400);
+				     creditslabel.setLocation(100, 50);
+				     creditsScreen.add(creditslabel);
 					
 				     sound.playSound("button_push.wav");
 					 System.out.println("clear");

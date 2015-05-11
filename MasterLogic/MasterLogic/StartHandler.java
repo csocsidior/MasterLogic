@@ -29,17 +29,25 @@ public class StartHandler  implements ActionListener
 	Icon white = new ImageIcon(Colour.class.getResource("white.png"));
 	Icon brown = new ImageIcon(Colour.class.getResource("brown.png"));
 
+	static Icon bgroundImage = new ImageIcon(StartHandler.class.getResource("mainmenu_bg.png"));
+	static JLabel imagelabel = new JLabel("", bgroundImage,JLabel.CENTER);
 	
 	//dashBoard background 
-	Icon bgroundImage1 = new ImageIcon(StartScreen.class.getResource("mushroomBack1.png"));
-	Icon bgroundImage2 = new ImageIcon(StartScreen.class.getResource("mushroomBack2.png"));
-	Icon bgroundImage3 = new ImageIcon(StartScreen.class.getResource("mushroomBack3.png"));
+	Icon bgroundImage1 = new ImageIcon(StartScreen.class.getResource("dashboard_easy_dark.png"));
+	Icon bgroundImage2 = new ImageIcon(StartScreen.class.getResource("dashboard_medium_dark.png"));
+	Icon bgroundImage3 = new ImageIcon(StartScreen.class.getResource("dashboard_hard_dark.png"));
+	
+	//Cover backgrounds
+	Icon covericon1 = new ImageIcon(StartScreen.class.getResource("cover_easy.png"));
+	Icon covericon2 = new ImageIcon(StartScreen.class.getResource("cover_medium.png"));
+	Icon covericon3 = new ImageIcon(StartScreen.class.getResource("cover_hard.png"));
+
 	
 	//background label on the dashBoard 
-	Icon backOfMush = new ImageIcon(StartScreen.class.getResource("backback.png"));
+	Icon backOfMush = new ImageIcon(StartScreen.class.getResource("dirt.png"));
 	
-	static JPanel gameWindow = new JPanel();	// static gameBoard panel
-	JLabel coverlabel = new JLabel("Mushroom code");  //The guesses are hidden behind it
+	static JPanel gameWindow = new JPanel();		// static gameBoard panel
+	JLabel coverlabel = new JLabel();  	//The guesses are hidden behind it
 	JLabel imagelabel1 = new JLabel("", bgroundImage1,JLabel.CENTER);
 	JLabel imagelabel2 = new JLabel("", bgroundImage2,JLabel.CENTER); 
 	JLabel imagelabel3 = new JLabel("", bgroundImage3,JLabel.CENTER);
@@ -69,8 +77,10 @@ public class StartHandler  implements ActionListener
 		for(int i=0; i< 10; i++)
 		{
 			numberOfGuess[i] = new JLabel(""+(i+1),JLabel.CENTER);
-			numberOfGuess[i].setSize(15, 15);
-			numberOfGuess[i].setLocation(190, 125 + 60*i);
+			numberOfGuess[i].setSize(30, 30);
+			numberOfGuess[i].setFont(new java.awt.Font("Times New Roman", 1, 20));
+			numberOfGuess[i].setForeground (Color.BLACK);
+			numberOfGuess[i].setLocation(195, 120 + 60*i);
 			numberOfGuess[i].setBackground(Color.CYAN);
 			gameWindow.add(numberOfGuess[i]);
 		}
@@ -107,7 +117,7 @@ public class StartHandler  implements ActionListener
 		for(int i=0;i<StartScreen.numOfPlaces;i++)
 		{
 			generatedMushroomArray[i] = new JButton("");
-			generatedMushroomArray[i].setLocation(260+i*60, 5);
+			generatedMushroomArray[i].setLocation(260+i*60, 25);
 			
 			 switch(ItemListeners.generatedNums[i])
 			 {
@@ -192,26 +202,32 @@ public class StartHandler  implements ActionListener
 		gameWindow.setPreferredSize(new Dimension(800, 700));
 		start.frame.add(gameWindow);
 		start.frame.pack();
+		
+		imagelabel.setSize(gameWindow.getWidth(), gameWindow.getHeight());
+        gameWindow.add(imagelabel);
 
 		switch(StartScreen.numOfColours)
 		 {
 		case 6 : int i = 0;
-				 coverlabel.setSize(240+ i*60,90);
+				 coverlabel.setSize(280+ i*60,100);
+				 coverlabel.setIcon(covericon1);
 				 break;
 				 
 		case 7 : i = 1;
-				 coverlabel.setSize(240+ i*60,90);
+				 coverlabel.setSize(280+ i*60,100);
+				 coverlabel.setIcon(covericon2);
 		         break;
 		         
 		case 8 : i = 2;
-				 coverlabel.setSize(240+ i*60,90);
+				 coverlabel.setSize(280+ i*60,100);
+				 coverlabel.setIcon(covericon3);
 				 
 		default: break; 
 		 }
 		
-		coverlabel.setLocation(260, 5);									//label of the firstScreen
+		coverlabel.setLocation(240, 5);									//label of the firstScreen
         coverlabel.setFont(new java.awt.Font("Times New Roman", 1, 30));
-        coverlabel.setOpaque(true);
+        coverlabel.setOpaque(false);
         coverlabel.setForeground (Color.BLACK);
         gameWindow.add(coverlabel);
 		
@@ -222,6 +238,9 @@ public class StartHandler  implements ActionListener
 		createGeneratedMushrooms();		//creates the hidden mushrooms
 		createMushroomLabels();			//creates the dashBoard
 		createBackgroundLabels();		//creates the labels on the dashBoard
+		
+		gameWindow.setComponentZOrder(imagelabel, 
+				gameWindow.getComponentCount()-1);	
 		
 		sound.playSound("button_push.wav");
 

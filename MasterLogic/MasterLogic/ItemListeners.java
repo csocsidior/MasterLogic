@@ -1,6 +1,5 @@
 package MasterLogic;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -44,6 +43,14 @@ public class ItemListeners {
 	Icon b_done_down = new ImageIcon(StartScreen.class.getResource("b_done_down.png"));
 	Icon b_done_up = new ImageIcon(StartScreen.class.getResource("b_done_up.png"));
 	
+	Icon b_quittomain_up = new ImageIcon(StartScreen.class.getResource("b_quittomain_up.png"));
+	Icon b_quittomain_down = new ImageIcon(StartScreen.class.getResource("b_quittomain_down.png"));
+	
+	Icon b_mute_up = new ImageIcon(StartScreen.class.getResource("b_mute_up.png"));
+	Icon b_mute_down = new ImageIcon(StartScreen.class.getResource("b_mute_down.png"));
+	
+	Icon backOfMush = new ImageIcon(StartScreen.class.getResource("dirt.png"));
+	
 	static boolean stateOfMute=true;
 
 	public ItemListeners()
@@ -73,20 +80,16 @@ public class ItemListeners {
 	
 	public void createItemListeners()
 	{
- 
         for(int i=0; i<StartScreen.numOfColours; i++)
         {
         	colours.colourButtons[i].setEnabled(false);
         }
-
 		colours.colourButtons[0].addItemListener(new ItemListener() 
 	    {
 	    	   public void itemStateChanged(ItemEvent press) 
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
-	    	      {
-	    	        //System.out.println("colour0 is selected");			//Itemlistenerjei a színeknek  	
-
+	    	      {	
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=0)
@@ -94,7 +97,6 @@ public class ItemListeners {
 	    	        	colours.colourButtons[i].setEnabled(false);
 	    	        	}
 	    	        }
-	
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if( colourplaces.placeButtons[i].isSelected()  )
@@ -112,7 +114,6 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
@@ -128,14 +129,11 @@ public class ItemListeners {
 	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
 	    			        colourplaces.placeButtons[i].setBorderPainted(false);
 	    			        colourplaces.placeButtons[i].setOpaque(false);
-	    			        //colourplaces.placeButtons[i].setBackground(Color.YELLOW);
 	    	        	}
 	    	        }													
 	    	      } 																		 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour0 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=0)
@@ -207,8 +205,6 @@ public class ItemListeners {
 		    	      } 
 		    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 		    	      {
-		    	        //System.out.println("colour1 is not selected");
-		    	        
 		    	        for(int i=0; i<StartScreen.numOfColours; i++)
 		    	        {
 		    	        	if(i!=1)
@@ -220,15 +216,13 @@ public class ItemListeners {
 		    	      sound.playSound("ticksound.wav");
 		    	   }
 		    	});
-		 
+		
 		colours.colourButtons[2].addItemListener(new ItemListener() 
 	    {
 	    	   public void itemStateChanged(ItemEvent press) 
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colour2 is selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=2)
@@ -236,7 +230,6 @@ public class ItemListeners {
 	    	        	colours.colourButtons[i].setEnabled(false);
 	    	        	}
 	    	        }
-
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(colourplaces.placeButtons[i].isSelected())
@@ -251,17 +244,12 @@ public class ItemListeners {
 	    		    	    {
 	    		    	    	colours.colourButtons[j].setEnabled(false);
 	    		    	    }
-	    		    	 
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -282,8 +270,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour2 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=2)
@@ -302,8 +288,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colour3 is selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=3)
@@ -330,9 +314,6 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
@@ -342,9 +323,7 @@ public class ItemListeners {
 	    			        if(flag)
 	    			        {
 	    			        	done.setEnabled(true);
-	    			        }
-	    			        
-	    			        //colourplaces.placeButtons[i].setBackground(Color.BLUE);	
+	    			        }	
 	    			        colourplaces.placeButtons[i].setIcon(blue);
 	    			        colourplaces.placeButtons[i].setDisabledIcon(blue);
 	    			        colourplaces.placeButtons[i].setPressedIcon(blue);
@@ -356,8 +335,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour3 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=3)
@@ -376,8 +353,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colour4 is selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=4)
@@ -385,8 +360,6 @@ public class ItemListeners {
 	    	        	colours.colourButtons[i].setEnabled(false);
 	    	        	}
 	    	        }
-	    	      
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(colourplaces.placeButtons[i].isSelected())
@@ -405,13 +378,9 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -419,7 +388,6 @@ public class ItemListeners {
 	    			        	done.setEnabled(true);
 	    			        }
 	    			        
-	    			        	
 	    			        colourplaces.placeButtons[i].setIcon(green);
 	    			        colourplaces.placeButtons[i].setDisabledIcon(green);
 	    			        colourplaces.placeButtons[i].setPressedIcon(green);
@@ -431,8 +399,7 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour4 is not selected");
-	    	        
+
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=4)
@@ -460,8 +427,7 @@ public class ItemListeners {
 	    	        	colours.colourButtons[i].setEnabled(false);
 	    	        	}
 	    	        }
-	    	      
-	    	        
+
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(colourplaces.placeButtons[i].isSelected())
@@ -480,13 +446,9 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -505,8 +467,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour5 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=5)
@@ -534,8 +494,6 @@ public class ItemListeners {
 	    	        	colours.colourButtons[i].setEnabled(false);
 	    	        	}
 	    	        }
-	    	      
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(colourplaces.placeButtons[i].isSelected())
@@ -554,13 +512,9 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -627,13 +581,9 @@ public class ItemListeners {
 	    		    	    boolean flag = true;
 	    		    	    for(int k=0; k<StartScreen.numOfPlaces; k++)
 	    		    	    {
-	    		    	    	
-	    		    	    	
-	    		    	    	
 	    		    	    	if(engine.arraycheck[k]==10 )
 	    		    	    	{
 	    		    	    		flag = false;
-	    		    	    		
 	    		    	    	}
 	    		    	    }
 	    			        if(flag)
@@ -652,8 +602,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colour7 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfColours; i++)
 	    	        {
 	    	        	if(i!=7)
@@ -674,8 +622,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace0 is selected");	
-
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=0)
@@ -691,8 +637,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace0 is not selected");
-	    	    
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=0)
@@ -701,7 +645,6 @@ public class ItemListeners {
 	    	        	}
 	    	        }
 	    	      }
-	    	      
 	    	   }
 		 });
 
@@ -711,8 +654,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace1 is selected");	
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=1)
@@ -728,8 +669,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace1 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=1)
@@ -747,8 +686,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace2 is selected");	
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=2)
@@ -764,8 +701,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace2 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=2)
@@ -783,8 +718,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace3 is selected");	
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=3)
@@ -800,8 +733,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace3 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=3)
@@ -819,8 +750,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace4 is selected");	
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=4)
@@ -836,8 +765,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace4 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=4)
@@ -855,8 +782,6 @@ public class ItemListeners {
 	    	   {
 	    	      if(press.getStateChange()==ItemEvent.SELECTED)
 	    	      {
-	    	        //System.out.println("colourplace5 is selected");	
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=5)
@@ -872,8 +797,6 @@ public class ItemListeners {
 	    	      } 
 	    	      else if(press.getStateChange()==ItemEvent.DESELECTED)
 	    	      {
-	    	        //System.out.println("colourplace5 is not selected");
-	    	        
 	    	        for(int i=0; i<StartScreen.numOfPlaces; i++)
 	    	        {
 	    	        	if(i!=5)
@@ -887,23 +810,34 @@ public class ItemListeners {
 		 	
 		 	done.setEnabled(false);
 		 	done.setSize(64, 64);
-		    done.setLocation(720, 100);
+		    done.setLocation(630, 110);
 		    done.setDisabledIcon(b_done_disabled);
 		    done.setIcon(b_done_up);
 		    done.setRolloverIcon(b_done_down);
 		    done.setContentAreaFilled(false);
 		    done.setBorderPainted(false);
 		    done.setOpaque(false);
-		    a.gameWindow.add(done);
+		    StartHandler.gameWindow.add(done);
 		    
-		    backtoMenu.setSize(100, 60);
-		    backtoMenu.setLocation(670, 620);
+		    backtoMenu.setSize(110, 64);
+		    backtoMenu.setLocation(670, 10);
 		    backtoMenu.setEnabled(true);
-		    a.gameWindow.add(backtoMenu);
+		    backtoMenu.setIcon(b_quittomain_up);
+		    backtoMenu.setRolloverIcon(b_quittomain_down);
+		    backtoMenu.setContentAreaFilled(false);
+		    backtoMenu.setBorderPainted(false);
+		    backtoMenu.setOpaque(false);
+		    StartHandler.gameWindow.add(backtoMenu);
 		    
-		    mute.setSize(40, 40);
-		    mute.setLocation(630, 620);
-	        a.gameWindow.add(mute);
+		    mute.setSize(64, 64);
+		    mute.setLocation(140, 10);
+		    mute.setIcon(b_mute_up);
+		    mute.setSelectedIcon(b_mute_down);
+		    mute.setContentAreaFilled(false);
+		    mute.setBorderPainted(false);
+		    mute.setOpaque(false);
+		    
+	        StartHandler.gameWindow.add(mute);
 	        
 	        mute.addItemListener(new ItemListener() 
 			 {
@@ -932,11 +866,10 @@ public class ItemListeners {
 						if(option == JOptionPane.YES_OPTION)			
 				 		{
 							a.coverlabel.setVisible(true);
-							a.gameWindow.removeAll();
-						 	a.gameWindow.revalidate();
-						 	a.gameWindow.repaint();
-						 	a.gameWindow.setVisible(false);
-						 	//a.createGeneratedMushrooms();
+							StartHandler.gameWindow.removeAll();
+						 	StartHandler.gameWindow.revalidate();
+						 	StartHandler.gameWindow.repaint();
+						 	StartHandler.gameWindow.setVisible(false);
 						 	a.start.firstScreen.setVisible(true);
 						 	for(int i=0; i<8; i++)
 							 {
@@ -962,46 +895,35 @@ public class ItemListeners {
 				 		{
 				 			sound.playSound("button_push_back.wav");	// "clicking back" sound
 				 		}
-					 	
-					 	
-					 	
 				 }
 		    });
-
 		    
 		    done.addActionListener(new ActionListener() 
 		    {
 		    													//counter for the button displacements
-		    	
 				 public void actionPerformed(ActionEvent e)
 				 {
 					 for(int i=0; i<StartScreen.numOfPlaces; i++)
 					 {
-						 //System.out.print(" "+ container[i] );
-						 
 						 done.setEnabled(false);
 						 
 						 colourplaces.placeButtons[i].setLocation(260+i*60, 100+ 60*counter);	
-						 done.setLocation(720, 100+ 60*counter);
-						 colourplaces.placeButtons[i].setBackground(Color.DARK_GRAY);
+						 done.setLocation(630, 110+ 60*counter);
 						 containerForGuessedButtons[i]=container[i];
 						 
 						 System.out.print("   "+ containerForGuessedButtons[i] );
 						 
-						 	colourplaces.placeButtons[i].setIcon(null);
-	    			        colourplaces.placeButtons[i].setDisabledIcon(null);
-	    			        colourplaces.placeButtons[i].setPressedIcon(null);
-	    			        colourplaces.placeButtons[i].setContentAreaFilled(true);
-	    			        colourplaces.placeButtons[i].setBorderPainted(true);
-	    			        colourplaces.placeButtons[i].setOpaque(true);
+						 	colourplaces.placeButtons[i].setIcon(backOfMush);
+	    			        colourplaces.placeButtons[i].setDisabledIcon(backOfMush);
+	    			        colourplaces.placeButtons[i].setPressedIcon(backOfMush);
+	    			        colourplaces.placeButtons[i].setContentAreaFilled(false);
+	    			        colourplaces.placeButtons[i].setBorderPainted(false);
+	    			        colourplaces.placeButtons[i].setOpaque(false);
 	    			        
 	    			        engine.arraycheck[i]=10;
-						 
 					 }
 					 
 					 engine.check();
-					 
-					 //System.out.print("BLACK:"+ engine.black);
 					 
 					 stickInstance.generateStickArray();
 					 stickInstance.generateSticks();
@@ -1018,17 +940,17 @@ public class ItemListeners {
 						 colourplaces.placeButtons[i].setEnabled(false);
 						 }
 						 a.coverlabel.setVisible(false);
-						 int input = JOptionPane.showConfirmDialog(null, "Nagyon ügyi!", "Win!!!", 
+						 sound.playSound("win_sound.wav");
+						 int input = JOptionPane.showConfirmDialog(null, "Well done!", "Win!!!", 
 								     JOptionPane.OK_OPTION, JOptionPane.CANCEL_OPTION, red);
 
 						 if(input == JOptionPane.OK_OPTION)
 						 {
 								a.coverlabel.setVisible(true);
-								a.gameWindow.removeAll();
-							 	a.gameWindow.revalidate();
-							 	a.gameWindow.repaint();
-							 	a.gameWindow.setVisible(false);
-							 	//a.createGeneratedMushrooms();
+								StartHandler.gameWindow.removeAll();
+								StartHandler.gameWindow.revalidate();
+								StartHandler.gameWindow.repaint();
+								StartHandler.gameWindow.setVisible(false);
 							 	a.start.firstScreen.setVisible(true);
 							 	for(int i=0; i<8; i++)
 								 {
@@ -1049,8 +971,8 @@ public class ItemListeners {
 							 	}			
 							 	tries = 0;
 								sound.playSound("button_push_back.wav");	// "clicking back" sound
+						
 						 }
-						 //JOptionPane.showMessageDialog(null, "Ügyi !");
 					 }
 					 else if(counter==10)
 					 {
@@ -1059,16 +981,18 @@ public class ItemListeners {
 						 colourplaces.placeButtons[i].setEnabled(false);
 						 }
 						 a.coverlabel.setVisible(false);
-						 JOptionPane.showMessageDialog(null, "Game Over !");
+						 sound.playSound("lose_sound.wav");
+						 JOptionPane.showMessageDialog(null, "Game Over !"); 
 					 }
 					 
+					 StartHandler.gameWindow.setComponentZOrder(StartHandler.imagelabel, 
+					 StartHandler.gameWindow.getComponentCount()-1);	
 					 
 					 engine.white = 0;
 					 engine.black = 0;
 					 engine.nomatch = 0;
 					 counter++; 
 					 tries++;
-					 
 				 }
 		    }
 		    );
